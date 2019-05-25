@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :bank_api, BankAPI.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "serradura",
+  password: "",
   database: "bank_api_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

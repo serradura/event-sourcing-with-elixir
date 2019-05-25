@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :bank_api, BankAPI.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "serradura",
+  password: "",
   database: "bank_api_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
