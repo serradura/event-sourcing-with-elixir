@@ -22,6 +22,20 @@ config :bank_api, BankAPIWeb.Endpoint,
   check_origin: false,
   watchers: []
 
+# Configure Commanded event store
+config :eventstore,
+  column_data_type: "jsonb"
+
+config :eventstore, EventStore.Storage,
+  serializer: EventStore.JsonbSerializer,
+  types: EventStore.PostgresTypes,
+  username: "serradura",
+  password: "",
+  database: "bank_api_eventstore_dev",
+  hostname: "localhost",
+  pool_size: 10,
+  pool_overflow: 5
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

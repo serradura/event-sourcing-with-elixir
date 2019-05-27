@@ -14,5 +14,12 @@ config :bank_api, BankAPIWeb.Endpoint,
   http: [port: 4002],
   server: false
 
+# Configure Commanded event store
+config :commanded,
+  event_store_adapter: Commanded.EventStore.Adapters.InMemory
+
+config :commanded, Commanded.EventStore.Adapters.InMemory,
+  serializer: Commanded.Serialization.JsonSerializer
+
 # Print only warnings and errors during test
 config :logger, level: :warn
