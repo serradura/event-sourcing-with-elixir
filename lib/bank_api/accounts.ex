@@ -11,6 +11,23 @@ defmodule BankAPI.Accounts do
   alias BankAPI.Accounts.Commands.OpenAccount
   alias BankAPI.Accounts.Projections.Account
 
+  def get_by_uuid!(uuid) do
+    Account
+    |> Ecto.Query.where(uuid: ^uuid)
+    |> Ecto.Query.first
+    |> Repo.one
+  end
+
+  def get_by_uuid(uuid) do
+    with {:ok, [{:uuid, valid_uuid} | _]} <- UUID.info(uuid),
+         account = %Account{} <- get_by_uuid!(valid_uuid) do
+      {:ok, account}
+    else
+      {:error, message} -> {:error, :invalid_uuid, message}
+      _ -> {:error, :not_found, "Account not found"}
+    end
+  end
+
   def get_account(uuid), do: Repo.get!(Account, uuid)
 
   def open_account(account_params) do
