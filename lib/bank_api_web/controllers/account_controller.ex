@@ -15,22 +15,10 @@ defmodule BankAPIWeb.AccountController do
   end
 
   def show(conn, %{"id" => id}) do
-    case Accounts.get_by_uuid(id) do
+    case Accounts.get_account(id) do
       {:ok, account} ->
-        conn
-        |> render("show.json", account: account)
-      {:error, :invalid_uuid, message} ->
-        conn
-        |> render_error_as_json(:bad_request, message)
-      {:error, :not_found, message} ->
-        conn
-        |> render_error_as_json(:not_found, message)
+        render(conn, "show.json", account: account)
+      err -> err
     end
-  end
-
-  defp render_error_as_json(conn, status, message) do
-    conn
-    |> put_status(status)
-    |> json(%{data: %{error: message}})
   end
 end

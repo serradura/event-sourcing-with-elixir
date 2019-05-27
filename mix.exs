@@ -44,7 +44,8 @@ defmodule BankAPI.MixProject do
       {:commanded, "~> 0.18"},
       {:eventstore, "~> 0.16.2", runtime: Mix.env() != :test},
       {:commanded_eventstore_adapter, "~> 0.5", runtime: Mix.env() != :test},
-      {:commanded_ecto_projections, "~> 0.8"}
+      {:commanded_ecto_projections, "~> 0.8"},
+      {:skooma, "~> 0.2.0"}
     ]
   end
 

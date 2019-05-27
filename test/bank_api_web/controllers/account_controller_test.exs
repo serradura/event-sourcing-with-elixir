@@ -62,8 +62,8 @@ defmodule BankAPIWeb.AccountControllerTest do
       conn = get(conn, Routes.account_path(conn, :show, invalid_uuid))
 
       assert %{
-               "error" => "Invalid argument; Not a valid UUID: 598d1b3b"
-             } = json_response(conn, 400)["data"]
+              "errors" => %{"detail" => "Unprocessable Entity"}
+              } = json_response(conn, 422)
     end
 
     test "renders as not found when the account uuid was not found", %{conn: conn} do
@@ -72,8 +72,8 @@ defmodule BankAPIWeb.AccountControllerTest do
       conn = get(conn, Routes.account_path(conn, :show, invalid_uuid))
 
       assert %{
-               "error" => "Account not found"
-             } = json_response(conn, 404)["data"]
+              "errors" => %{"detail" => "Not Found"}
+              } = json_response(conn, 404)
     end
   end
 end

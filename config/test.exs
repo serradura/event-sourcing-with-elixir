@@ -5,8 +5,8 @@ config :bank_api, BankAPI.Repo,
   username: "serradura",
   password: "",
   database: "bank_api_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  hostname: "localhost"#,
+  # pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
