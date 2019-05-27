@@ -41,20 +41,11 @@ defmodule BankAPI.Accounts do
           initial_balance: changeset.changes.initial_balance,
           account_uuid: account_uuid
         }
-        |> Router.dispatch()
+        |> Router.dispatch(consistency: :strong)
 
-      case dispatch_result do
-        :ok ->
-          {
-            :ok,
-            %Account{
-              uuid: account_uuid,
-              current_balance: changeset.changes.initial_balance
-            }
-          }
-
-        reply ->
-          reply
+      case get_account(account_uuid) do
+        account = %Account{} -> {:ok, account}
+        reply -> reply
       end
     else
       {:validation_error, changeset}
