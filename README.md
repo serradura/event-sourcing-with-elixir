@@ -1,5 +1,15 @@
 # BankAPI
 
+Implements an API in Elixir/Phoenix with Event Sourcing/CQRS, based on the excellent blog post series of https://blog.nootch.net.
+
+- [x] https://blog.nootch.net/post/event-sourcing-with-elixir/
+- [x] https://blog.nootch.net/post/event-sourcing-with-elixir-part-1/
+- [x] https://blog.nootch.net/post/event-sourcing-with-elixir-part-2/
+- [x] https://blog.nootch.net/post/event-sourcing-with-elixir-part-3/
+- [x] https://blog.nootch.net/post/event-sourcing-with-elixir-part-4/
+
+---
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
