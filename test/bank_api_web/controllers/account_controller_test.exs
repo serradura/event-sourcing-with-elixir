@@ -1,6 +1,9 @@
 defmodule BankAPIWeb.AccountControllerTest do
   use BankAPIWeb.ConnCase
 
+  alias BankAPI.Repo
+  alias BankAPI.Accounts.Projections.Account
+
   @create_attrs %{
     initial_balance: 42_00
   }
@@ -43,10 +46,7 @@ defmodule BankAPIWeb.AccountControllerTest do
     test "renders account when data is valid", %{conn: conn} do
       uuid = UUID.uuid4
 
-      BankAPI.Repo.insert(%BankAPI.Accounts.Projections.Account{
-        current_balance: 1,
-        uuid: uuid
-      })
+      Repo.insert(%Account{current_balance: 1,uuid: uuid})
 
       conn = get(conn, Routes.account_path(conn, :show, uuid))
 
